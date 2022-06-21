@@ -3,11 +3,11 @@ import numpy as np
 from sklearn import datasets, linear_model, metrics
 
 # load the boston dataset
-boston = datasets.load_boston(return_X_y=False)
+ma = datasets.load_ma(return_X_y=False)
 
 # defining feature matrix(X) and response vector(y)
-X = boston.data
-y = boston.target
+X = profit2ybefore
+y = profit2yafter
 
 # splitting X and y into training and testing sets
 from sklearn.model_selection import train_test_split
