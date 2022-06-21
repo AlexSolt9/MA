@@ -23,14 +23,8 @@ y = np.array([89.148, 13062.052, 1.357, 28.107, -0.177, 364.172, 45.512, 30.454,
 >>> print(y)
 [89.148 13062.052 1.357 28.107 -0.177 364.172 45.512 30.454 0.870 -1.933 0.877 -1.337 0.778 0.511]
 
-model = LinearRegression()
-
-model.fit(x, y)
-
-model = LinearRegression().fit(x, y)
-
 >>> r_sq = model.score(x, y)
->>> print('coefficient of determination:', r_sq)
+r_sq = LinearRegression().fit(x, y).score(x, y)
 coefficient of determination: 0.999964455
 
 >>> print('intercept:', model.intercept_)
