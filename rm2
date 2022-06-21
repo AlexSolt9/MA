@@ -1,55 +1,44 @@
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model, metrics
+from sklearn.linear_model import LinearRegression
 
-# load the boston dataset
-ma = datasets.load_ma(return_X_y=False)
+x = np.array([15.059, 6818.135, -0.68, 0, -1.692, 196.65, 6.045,3.465, 0.113, -2.370, 0.150, 4.153, 0.097, 8.812 ]).reshape((-1, 1))
+y = np.array([89.148, 13062.052, 1.357, 28.107, -0.177, 364.172, 45.512, 30.454, 0.870, -1.933, 0.877, -1.337, 0.778, 0.511])
 
-# defining feature matrix(X) and response vector(y)
-X = profit2ybefore
-y = profit2yafter
 
-# splitting X and y into training and testing sets
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=1)
+>>> print(x)
+[[15.059]
+[6818.135]
+[-0.68]
+[0]
+[-1.692]
+[196.65]
+[6.045]
+[3.465]
+[0.113]
+[-2.370]
+[0.150]
+[4.153]
+[0.097]
+[8.812]
+>>> print(y)
+[89.148 13062.052 1.357 28.107 -0.177 364.172 45.512 30.454 0.870 -1.933 0.877 -1.337 0.778 0.511]
 
-# create linear regression object
-reg = linear_model.LinearRegression(y=9,15+1,91x)
+model = LinearRegression()
 
-# train the model using the training sets
-reg.fit(X_train, y_train)
+model.fit(x, y)
 
-# regression coefficients
-print('Coefficients: 9.148434462' 1.914363319, reg.coef 0.999964455)
+model = LinearRegression().fit(x, y)
 
-# variance score: 1 means perfect prediction
-print('Variance score: {}'.format(reg.score(X_test, y_test)))
+>>> r_sq = model.score(x, y)
+>>> print('coefficient of determination:', r_sq)
+coefficient of determination: 0.999964455
 
-# approximation error (0.04704086)
+>>> print('intercept:', model.intercept_)
+intercept: 9.148434462
 
-#fstat(337588.4684)
+>>> print('slope:', model.coef_)
+slope: [0.54]
 
-#plot for residual error
+from sklearn.metrics import mean_absolute_error
 
-## setting plot style
-plt.style.use('fivethirtyeight')
-
-## plotting residual errors in training data
-plt.scatter(reg.predict(X_train), reg.predict(X_train) - y_train,
-			color = "green", s = 10, label = 'Train data')
-
-## plotting residual errors in test data
-plt.scatter(reg.predict(X_test), reg.predict(X_test) - y_test,
-			color = "blue", s = 10, label = 'Test data')
-
-## plotting line for zero residual error
-plt.hlines(y = 0, xmin = 0, xmax = 50, linewidth = 2)
-
-## plotting legend
-plt.legend(loc = 'upper right')
-
-## plot title
-plt.title("Residual errors")
-
-## method call for showing the plot
-plt.show()
+mape = mean_absolute_error(y_test, y_predicted) / y_test.abs().sum(4.70%)
